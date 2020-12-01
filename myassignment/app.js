@@ -40,7 +40,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
+/*
 mongoose
   .connect("mongodb://localhost/onlinestore", {
     useNewUrlParser: true,
@@ -48,4 +48,25 @@ mongoose
   })
   .then(() => console.log("Connected to Mongo...."))
   .catch((error) => console.log(error.message));
-module.exports = app;
+*/
+
+
+const db =
+  " mongodb+srv://bilal2468:bilal2468@cluster0.9zbo7.mongodb.net/<dbname>?retryWrites=true&w=majority";
+
+mongoose
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    socketTimeoutMS: 0,
+  })
+  .then(() => {
+    // winston.info(`Connected to ${db}...`);
+    console.clear();
+    console.log(`Connected to db...`);
+    // testCalculation();
+    // require("./models/addDummyData")();
+  });
+
+
+ module.exports = app;
